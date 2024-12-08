@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🫶</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #82cdff;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        #question {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        #buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #noButton {
+            position: relative; /* Initially static position */
+        }
+        #gif {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img id="gif" src="num3.gif" alt="">
+        <div id="question">Do you have any idea about this form?</div>
+        <div id="buttons">
+            <button id="yesButton">Yes</button>
+            <button id="noButton">No</button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+            "Do you have any idea about this form?",
+            "Do you like me when you first saw me in person?",
+            "Do you still find me attractive without my makeup on?",
+            "Can you cook better than me?",
+            "Are you thinking about me?",
+            "Are you comfortable around me?",
+            "Do you trust me completely?",
+            "Would you travel the world with me?",
+            "Are you proud of me?",
+            "Do you think I'm your soulmate?",
+            "Am I your best friend?",
+            "Would you rather wear matching",
+            "Would you stand by me through anything?",
+            "WILL YOU BE MY ROCK, MY PARTNER, AND MY EVERYTHING?",
+        ];
+    
+        const gifs = [
+            "num1_12_last.gif",
+            "num2_7.gif",
+            "num3.gif",
+            "num4_.gif",
+            "num5_10.gif",
+            "num6_9.gif",
+            "num2_7.gif",
+            "num8_13.gif",
+            "num6_9.gif",
+            "num5_10.gif",
+            "num11.gif",
+            "num12.gif",
+            "num8_13.gif",
+            "num5_10.gif"
+        ];
+    
+        const questionDiv = document.getElementById("question");
+        const gifImg = document.getElementById("gif");
+        const yesButton = document.getElementById("yesButton");
+        const noButton = document.getElementById("noButton");
+    
+        let questionIndex = 0;
+    
+        function nextQuestion() {
+            questionIndex++;
+            if (questionIndex < questions.length) {
+                questionDiv.textContent = questions[questionIndex];
+                gifImg.src = gifs[questionIndex];
+            } else {
+                questionDiv.textContent = "CONGRATULATIONS THIS PERSON IS OFFICIALLY 'YOURS'";
+                yesButton.style.display = "none";
+                noButton.style.display = "none";
+                gifImg.src = "last.gif";
+            }
+        }
+    
+        yesButton.addEventListener("click", nextQuestion);
+    
+        noButton.addEventListener("click", () => {
+            if (questionIndex === 0) {
+                // Allow "No" button to proceed for the first question
+                nextQuestion();
+            }
+        });
+    
+        noButton.addEventListener("mouseover", () => {
+            if (questionIndex > 0) {
+                // Move "No" button after the first question
+                const x = Math.random() * 300 - 150;
+                const y = Math.random() * 300 - 150;
+                noButton.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        });
+    
+        noButton.addEventListener("click", () => {
+            if (questionIndex > 0) {
+                // Proceed to the next question when "No" button is clicked
+                nextQuestion();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -55,6 +55,7 @@
             <button id="noButton">No</button>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
         const questions = [
             "Do you have any idea about this form?",
@@ -96,6 +97,14 @@
         const noButton = document.getElementById("noButton");
     
         let questionIndex = 0;
+
+        function launchConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 60,
+                origin: { y: 0.6 }
+            });
+        }
     
         function nextQuestion() {
             questionIndex++;
@@ -107,6 +116,7 @@
                 yesButton.style.display = "none";
                 noButton.style.display = "none";
                 gifImg.src = "last.gif";
+                launchConfetti();
             }
         }
     

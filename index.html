@@ -22,7 +22,7 @@
             gap: 20px;
         }
         #question {
-            font-size: 1.5em;
+            font-size: 3em;
             margin-bottom: 20px;
         }
         #buttons {
@@ -33,15 +33,15 @@
         }
         button {
             padding: 10px 20px;
-            font-size: 1em;
+            font-size: 2.5em;
             margin: 5px;
             cursor: pointer;
         }
         #noButton {
-            position: relative; /* Initially static position */
+            position: relative;
         }
         #gif {
-            width: 150px;
+            width: 200px;
             height: auto;
         }
     </style>
@@ -114,26 +114,18 @@
     
         noButton.addEventListener("click", () => {
             if (questionIndex === 0) {
-                // Allow "No" button to proceed for the first question
                 nextQuestion();
             }
         });
     
         noButton.addEventListener("mouseover", () => {
             if (questionIndex > 0) {
-                // Move "No" button after the first question
                 const x = Math.random() * 300 - 150;
                 const y = Math.random() * 300 - 150;
                 noButton.style.transform = `translate(${x}px, ${y}px)`;
             }
         });
-    
-        noButton.addEventListener("click", () => {
-            if (questionIndex > 0) {
-                // Proceed to the next question when "No" button is clicked
-                nextQuestion();
-            }
-        });
+
     </script>
 </body>
 </html>
